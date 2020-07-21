@@ -1,4 +1,4 @@
-## Search Algorithm Tool
+# Search Algorithm Tool
 
 The Search Algorithm Tool is a client-side application deployed on Netlify. Find the website here: https://searchalgorithmtool.netlify.app/
 
