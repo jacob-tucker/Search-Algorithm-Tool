@@ -12,7 +12,7 @@ There is also an option to generate a maze in different ways, to help the user a
 
 Lastly, the user can of course reset the board and go to a help menu that provides explanations for what weighted and unweighted mean, and also explains functionality for the app.
 
-# Algorithms
+## Algorithms
 
 As of now, the app features these algorithms:
 1. Dijkstra's Algorithm (with and without a Binary Heap implementation)
@@ -20,7 +20,7 @@ As of now, the app features these algorithms:
 3. Greedy Best-First Search
 4. Depth-First Search
 
-# Mazes
+## Mazes
 
 As of now, the app features these mazes:
 1. A Maze built from Recursive Division
