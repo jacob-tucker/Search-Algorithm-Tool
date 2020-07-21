@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Search Algorithm Tool
 
-## Available Scripts
+The Search Algorithm Tool is a client-side application deployed on Netlify. Find the website here: https://searchalgorithmtool.netlify.app/
 
-In the project directory, you can run:
+## Overview
 
-### `yarn start`
+This app is intended to help users better understand search algorithms by watching them visually. The algorithms display which nodes they are searching in order to help the user understand how and when nodes are searched in a graph, and then display the "shortest" path it could come up with. The start and end points can be adjusted, along with the capability for walls to be placed to better show how the algorithm moves around a grid if there are walls/weights in the way. After the algorithm has completed its search (meaning it has searched the finish node), it displays its "shortest" path.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each algorithm is also specified to be weighted/unweighted and displays whether or not it guarentees a shortest path to help the user better understand each algorithm and understand its benefits/downfalls.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+There is also an option to generate a maze in different ways, to help the user also better understand how these search algorithms work within different mazes of walls.
 
-### `yarn test`
+Lastly, the user can of course reset the board and go to a help menu that provides explanations for what weighted and unweighted mean, and also explains functionality for the app.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Algorithms
 
-### `yarn build`
+As of now, the app features these algorithms:
+1. Dijkstra's Algorithm (with and without a Binary Heap implementation)
+2. A* Search
+3. Greedy Best-First Search
+4. Depth-First Search
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Mazes
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+As of now, the app features these mazes:
+1. A Maze built from Recursive Division
+2. A Maze build from randomly generated walls (can be added repeatedly)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
