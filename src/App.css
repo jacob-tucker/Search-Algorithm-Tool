@@ -1,0 +1,33 @@
+.restartApp {
+  position: absolute;
+  height: 50px;
+  width: 100px;
+  background: lightgreen;
+  border: none;
+  outline: 0;
+  border-radius: 10px;
+  font-size: 20px;
+  color: white;
+  top: 1.5%;
+  left: 80%;
+  font-weight: bold;
+}
+
+
+.restart {
+  position: absolute;
+  height: 10%;
+  width: 100px;
+  background: lightblue;
+  border: none;
+  outline: 0;
+  font-size: 20px;
+  color: white;
+  top: 0%;
+  left: 70%;
+  font-weight: bold;
+}
+
+.restart:hover {
+  background: lightgreen;
+}
