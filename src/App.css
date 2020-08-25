@@ -31,6 +31,7 @@
 .restart:hover {
   background: lightgreen;
 }
+<<<<<<< HEAD
 
 @media all and (max-width: 1000px) {
   .restart {
@@ -38,3 +39,5 @@
     left: 75%;
   }
 }
+=======
+>>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
