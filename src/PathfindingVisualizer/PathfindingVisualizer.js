@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Node from './Node/Node';
-import {dijkstras, dijkstraNoBin, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
-import {astar, astar2} from '../algorithms/astar';
-import {greedy} from '../algorithms/greedy'
-import {dfs} from '../algorithms/dfs'
-import {randomMaze} from '../mazeGenerators/recursiveDivision'
-import {exporter} from '../mazeGenerators/random'
+import { dijkstras, dijkstraNoBin, getNodesInShortestPathOrder } from '../algorithms/dijkstra';
+import { astar, astar2 } from '../algorithms/astar';
+import { greedy } from '../algorithms/greedy'
+import { dfs } from '../algorithms/dfs'
+import { randomMaze } from '../mazeGenerators/recursiveDivision'
+import { exporter } from '../mazeGenerators/random'
 
 import './PathfindingVisualizer.css';
 var mouseIsPressed = false;
@@ -34,25 +34,25 @@ const PathfindingVisualizer = () => {
   }, []);
 
   const moving = (event) => {
-    if(!thereStart) {
-      setStylesStart({top: event.pageY-12.5, left: event.pageX-12.5, width: 5, height: 5, visibility: 'visible'})
-      if ( doneYet ) resetNodes()
-    } else if(!thereFinish) {
-      setStylesFinish({top: event.pageY, left: event.pageX, visibility: 'visible'})
-      if ( doneYet ) resetNodes()
+    if (!thereStart) {
+      setStylesStart({ top: event.pageY - 12.5, left: event.pageX - 12.5, width: 5, height: 5, visibility: 'visible' })
+      if (doneYet) resetNodes()
+    } else if (!thereFinish) {
+      setStylesFinish({ top: event.pageY, left: event.pageX, visibility: 'visible' })
+      if (doneYet) resetNodes()
     }
   }
 
   const handleMouseDown = (row, col) => {
-    if(row === startNodeRow && col === startNodeCol){
+    if (row === startNodeRow && col === startNodeCol) {
       const newGrid = getNewGridWithNewStart(grid, row, col)
       setGrid(newGrid)
       thereStart = false;
-    }else if(row === finishNodeRow && col === finishNodeCol){
+    } else if (row === finishNodeRow && col === finishNodeCol) {
       const newGrid = getNewGridWithNewFinish(grid, row, col)
       setGrid(newGrid)
       thereFinish = false;
-    }else{
+    } else {
       const newGrid = getNewGridWithWallToggled(grid, row, col);
       setGrid(newGrid)
       mouseIsPressed = true;
@@ -60,28 +60,28 @@ const PathfindingVisualizer = () => {
   }
 
   const handleMouseEnter = (row, col) => {
-    if (mouseIsPressed){
+    if (mouseIsPressed) {
       const newGrid = getNewGridWithWallToggled(grid, row, col);
       setGrid(newGrid)
     }
   }
 
   const handleMouseUp = (row, col) => {
-    if(!thereStart){
+    if (!thereStart) {
       setStartNodeRow(row)
       setStartNodeCol(col)
       const newGrid = getNewGridWithNewStart(grid, row, col)
       setGrid(newGrid)
       thereStart = true;
       setStylesStart({})
-    }else if(!thereFinish){
+    } else if (!thereFinish) {
       setFinishNodeRow(row)
       setFinishNodeCol(col)
       const newGrid = getNewGridWithNewFinish(grid, row, col)
       setGrid(newGrid)
       thereFinish = true;
       setStylesFinish({})
-    }else mouseIsPressed = false
+    } else mouseIsPressed = false
   }
 
   const animate = (visitedNodesInOrder, nodesInShortestPathOrder) => {
@@ -95,7 +95,7 @@ const PathfindingVisualizer = () => {
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
         //className of the Node, its GETTING the div because the div is what has that ID
-        if(!((node.row === finishNodeRow) && (node.col === finishNodeCol)) && !((node.row === startNodeRow) && (node.col === startNodeCol))){
+        if (!((node.row === finishNodeRow) && (node.col === finishNodeCol)) && !((node.row === startNodeRow) && (node.col === startNodeCol))) {
           document.getElementById(`node-${node.row}-${node.col}`).className =
             'node node-visited';
         }
@@ -108,7 +108,7 @@ const PathfindingVisualizer = () => {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
         //className of the Node, its GETTING the div because the div is what has that ID
-        if(i !== nodesInShortestPathOrder.length - 1){
+        if (i !== nodesInShortestPathOrder.length - 1) {
           document.getElementById(`node-${node.row}-${node.col}`).className =
             'node node-shortest-path';
         }
@@ -129,7 +129,7 @@ const PathfindingVisualizer = () => {
 
   const visualizeDijkstra = () => {
     const finishNode = grid[finishNodeRow][finishNodeCol];
-    const {finished, shortPath} = dijkstras(grid, startNodeRow, startNodeCol, finishNode);
+    const { finished, shortPath } = dijkstras(grid, startNodeRow, startNodeCol, finishNode);
     visitedNodes = finished
     shortestPath = shortPath
     animate(finished, shortPath);
@@ -139,7 +139,7 @@ const PathfindingVisualizer = () => {
   const visualizeAStar = () => {
     const startNode = grid[startNodeRow][startNodeCol];
     const finishNode = grid[finishNodeRow][finishNodeCol];
-    const {shortestPathAStar, visitedStuff} = astar(grid, startNode, finishNode)
+    const { shortestPathAStar, visitedStuff } = astar(grid, startNode, finishNode)
     visitedNodes = visitedStuff
     shortestPath = shortestPathAStar
     animate(visitedStuff, shortestPathAStar)
@@ -159,7 +159,7 @@ const PathfindingVisualizer = () => {
   const visualizeGreedy = () => {
     const startNode = grid[startNodeRow][startNodeCol];
     const finishNode = grid[finishNodeRow][finishNodeCol];
-    const {shortestPathGreedy, visitedThings} = greedy(grid, startNode, finishNode)
+    const { shortestPathGreedy, visitedThings } = greedy(grid, startNode, finishNode)
     visitedNodes = visitedThings
     shortestPath = shortestPathGreedy
     animate(visitedThings, shortestPathGreedy)
@@ -168,7 +168,7 @@ const PathfindingVisualizer = () => {
   const visualizeDFS = () => {
     const startNode = grid[startNodeRow][startNodeCol];
     const finishNode = grid[finishNodeRow][finishNodeCol];
-    const {shortestPathDFS, visitedItems} = dfs(grid, startNode, finishNode)
+    const { shortestPathDFS, visitedItems } = dfs(grid, startNode, finishNode)
     visitedNodes = visitedItems
     shortestPath = shortestPathDFS
     animate(visitedItems, shortestPathDFS)
@@ -176,32 +176,32 @@ const PathfindingVisualizer = () => {
 
 
   const algDecider = () => {
-    if(!doneYet){
+    if (!doneYet) {
       doneYet = true
-    }else{
+    } else {
       resetNodes()
     }
-    if(alg === 'Dijkstras Algorithm (without a Binary Heap)'){
+    if (alg === 'Dijkstras Algorithm (without a Binary Heap)') {
       visualizeDijkstraNoBin()
-    }else if(alg === 'Dijkstras Algorithm (with a Binary Heap)'){
+    } else if (alg === 'Dijkstras Algorithm (with a Binary Heap)') {
       visualizeDijkstra()
-    }else if(alg === 'A*'){
+    } else if (alg === 'A*') {
       visualizeAStar()
-    }else if(alg === 'Greedy Best-First Search'){
+    } else if (alg === 'Greedy Best-First Search') {
       visualizeGreedy()
-    }else if(alg === 'Depth-First Search'){
+    } else if (alg === 'Depth-First Search') {
       visualizeDFS()
     }
   }
 
   const resetNodes = () => {
-    for(let i = 0; i < visitedNodes.length; i++) {
+    for (let i = 0; i < visitedNodes.length; i++) {
       const node = visitedNodes[i];
       //if(node.row !== finishNodeRow || node.col !== finishNodeCol){
-        document.getElementById(`node-${node.row}-${node.col}`).classList.remove('node-visited');
+      document.getElementById(`node-${node.row}-${node.col}`).classList.remove('node-visited');
       //}
     }
-    for(let i = 1; i < shortestPath.length-1; i++) {
+    for (let i = 1; i < shortestPath.length - 1; i++) {
       const node = shortestPath[i];
       document.getElementById(`node-${node.row}-${node.col}`).classList.remove('node-shortest-path');
     }
@@ -218,10 +218,10 @@ const PathfindingVisualizer = () => {
     const grid = getInitialGrid(startNodeRow, startNodeCol, finishNodeRow, finishNodeCol);
     setGrid(grid);
     let arrayMoves = exporter(grid)
-    for(let i = 0; i < arrayMoves.length; i++){
+    for (let i = 0; i < arrayMoves.length; i++) {
       setTimeout(() => {
         const node = arrayMoves[i]
-        if(node !== grid[startNodeRow][startNodeCol] && node !== grid[finishNodeRow][finishNodeCol]){
+        if (node !== grid[startNodeRow][startNodeCol] && node !== grid[finishNodeRow][finishNodeCol]) {
           const newGrid = getNewGridWithWallToggled(grid, node.row, node.col)
           setGrid(newGrid)
         }
@@ -232,67 +232,72 @@ const PathfindingVisualizer = () => {
 
   return (
     <div>
-      {alg === 'Choose an algorithm'
-        ? <div className="namesofAlg"><h2>{alg}</h2></div>
-        : alg === 'Dijkstras Algorithm (with a Binary Heap)'
-        ? <div className="namesofAlg"><h2>{alg}:</h2><p>Dijkstras's algorithm is <b><i>unweighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
-        : alg === 'Dijkstras Algorithm (without a Binary Heap)'
-        ? <div className="namesofAlg"><h2>{alg}:</h2><p>Dijkstras's algorithm is <b><i>unweighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
-        : alg === 'A*'
-        ? <div className="namesofAlg"><h2>{alg}:</h2><p>The A* algorithm is <b><i>weighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
-        : alg === 'Greedy Best-First Search'
-        ? <div className="namesofAlg"><h2>{alg}:</h2><p>The Greedy Best-First search algorithm is <b><i>weighted</i></b> and <i><b>does not ensure</b></i> shortest path.</p></div>
-        : alg === 'Depth-First Search'
-        ? <div className="namesofAlg"><h2>{alg}:</h2><p>The Depth-First search algorithm is <b><i>unweighted</i></b> and <i><b>does not ensure</b></i> shortest path.</p></div>
-        : null}
-      <button className="doIt" onClick={() => {if(alg !== 'Choose an algorithm') algDecider()}}>Perform</button>
+      <button className="doIt" onClick={() => { if (alg !== 'Choose an algorithm') algDecider() }}>Perform</button>
       <button className="dropdown" onClick={() => {
-          setShow(!show)
-          setShow1(false)
-        }}>Algorithms<span className="caret"></span></button>
+        setShow(!show)
+        setShow1(false)
+      }}>Algorithms<span className="caret"></span></button>
       {show ? <div className="elements" onClick={() => setShow(false)}><button onClick={() => setAlg('Dijkstras Algorithm (without a Binary Heap)')}>Dijkstra's w/o BinHeap</button>
-                                                                       <button onClick={() => setAlg('Dijkstras Algorithm (with a Binary Heap)')}>Dijkstra's w/ BinHeap</button>
-                                                                       <button onClick={() => setAlg('A*')}>A*</button>
-                                                                       <button onClick={() => setAlg('Greedy Best-First Search')}>Greedy Best-First Search</button>
-                                                                       <button onClick={() => setAlg('Depth-First Search')}>Depth-First Search</button>
+        <button onClick={() => setAlg('Dijkstras Algorithm (with a Binary Heap)')}>Dijkstra's w/ BinHeap</button>
+        <button onClick={() => setAlg('A*')}>A*</button>
+        <button onClick={() => setAlg('Greedy Best-First Search')}>Greedy Best-First Search</button>
+        <button onClick={() => setAlg('Depth-First Search')}>Depth-First Search</button>
 
-              </div> : null}
+      </div> : null}
       <button className="dropdown1" onClick={() => {
-          setShow1(!show1)
-          setShow(false)
-        }}>Mazes<span className="caret"></span></button>
+        setShow1(!show1)
+        setShow(false)
+      }}>Mazes<span className="caret"></span></button>
       {show1 ? <div className="elements1" onClick={() => setShow1(false)}><button onClick={doMaze}>Random</button>
-                                                                          <button onClick={doMaze2}>Recursive Division</button>
-              </div> : null}
-      <div className="grid" onMouseMove={moving}>
-        <div style={stylesStart} className="removeplz1"></div>
-        <div style={stylesFinish} className="removeplz2"></div>
-        {grid.map((row, rowIdx) => {
-          return (
-            <div key={rowIdx} className="rowClass">
-              {row.map((node, nodeIdx) => {
-                const {row, col, isFinish, isStart, isWall} = node;
-                return (
+        <button onClick={doMaze2}>Recursive Division</button>
+      </div> : null}
 
-                  <Node
-                    key={nodeIdx}
-                    col={col}
-                    isFinish={isFinish}
-                    isStart={isStart}
-                    isWall={isWall}
-                    onMouseDown={() => handleMouseDown(row, col)}
-                    onMouseEnter={() =>
-                      handleMouseEnter(row, col)
-                    }
-                    onMouseUp={() => handleMouseUp(row, col)}
-                    row={row}></Node>
+      <div className="entire">
+        {alg === 'Choose an algorithm'
+          ? <div className="namesofAlg"><h2>{alg}</h2></div>
+          : alg === 'Dijkstras Algorithm (with a Binary Heap)'
+            ? <div className="namesofAlg"><h2>{alg}:</h2><p>Dijkstras's algorithm is <b><i>unweighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
+            : alg === 'Dijkstras Algorithm (without a Binary Heap)'
+              ? <div className="namesofAlg"><h2>{alg}:</h2><p>Dijkstras's algorithm is <b><i>unweighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
+              : alg === 'A*'
+                ? <div className="namesofAlg"><h2>{alg}:</h2><p>The A* algorithm is <b><i>weighted</i></b> and <i><b>ensures</b></i> shortest path.</p></div>
+                : alg === 'Greedy Best-First Search'
+                  ? <div className="namesofAlg"><h2>{alg}:</h2><p>The Greedy Best-First search algorithm is <b><i>weighted</i></b> and <i><b>does not ensure</b></i> shortest path.</p></div>
+                  : alg === 'Depth-First Search'
+                    ? <div className="namesofAlg"><h2>{alg}:</h2><p>The Depth-First search algorithm is <b><i>unweighted</i></b> and <i><b>does not ensure</b></i> shortest path.</p></div>
+                    : null}
 
-                );
-              })}
-            </div>
-          );
-        })}
+        <div className="grid" onMouseMove={moving}>
+          <div style={stylesStart} className="removeplz1"></div>
+          <div style={stylesFinish} className="removeplz2"></div>
+          {grid.map((row, rowIdx) => {
+            return (
+              <div key={rowIdx} className="rowClass">
+                {row.map((node, nodeIdx) => {
+                  const { row, col, isFinish, isStart, isWall } = node;
+                  return (
+
+                    <Node
+                      key={nodeIdx}
+                      col={col}
+                      isFinish={isFinish}
+                      isStart={isStart}
+                      isWall={isWall}
+                      onMouseDown={() => handleMouseDown(row, col)}
+                      onMouseEnter={() =>
+                        handleMouseEnter(row, col)
+                      }
+                      onMouseUp={() => handleMouseUp(row, col)}
+                      row={row}></Node>
+
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
       </div>
+
     </div>
   );
 }

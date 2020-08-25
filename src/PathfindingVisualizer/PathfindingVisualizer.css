@@ -1,5 +1,12 @@
+.entire {
+  top: 20%;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+}
 .grid {
-  margin: 12% 6%;
+  position: relative;
+  margin: 0px 6%;
 }
 
 .algorithm {
@@ -10,14 +17,16 @@
 }
 
 .namesofAlg{
-  position: absolute;
-  top: 16%;
+  display: flex;
+  position: relative;
+  top: -10px;
   left: 5.5%;
+  width: 90%;
 }
 
 .namesofAlg p, .namesofAlg h2{
   margin-left: 10px;
-  display: inline-block;
+  
 }
 
 .namesofAlg p {
@@ -158,4 +167,26 @@
   font-size: 12px;
   border-radius: 5px;
   height: 10%;
+}
+
+@media all and (max-width: 1000px) {
+  .namesofAlg {
+    top: 0px;
+  }
+  .doIt {
+    font-size: 13px;
+  }
+  .dropdown {
+    font-size: 13px;
+  }
+  .dropdown1 {
+    left: 49%;
+    font-size: 13px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .dropdown1 {
+    left: 52%;
+  }
 }

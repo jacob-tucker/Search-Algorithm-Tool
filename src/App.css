@@ -31,3 +31,10 @@
 .restart:hover {
   background: lightgreen;
 }
+
+@media all and (max-width: 1000px) {
+  .restart {
+    font-size: 15px;
+    left: 75%;
+  }
+}
