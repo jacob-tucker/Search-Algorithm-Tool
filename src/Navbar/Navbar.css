@@ -57,8 +57,8 @@ h2:hover {
 
 .title {
   position: absolute;
+  top: 0px;
   left: 2.5%;
-  top: -7.5%;
   color: white;
 }
 
