@@ -26,4 +26,3 @@ As of now, the app features these mazes:
 1. A Maze built from Recursive Division
 2. A Maze build from randomly generated walls (can be added repeatedly)
 
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
