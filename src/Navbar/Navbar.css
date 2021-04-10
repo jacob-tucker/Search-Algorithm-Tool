@@ -10,10 +10,7 @@
 .help {
   position: relative;
   left: 90%;
-<<<<<<< HEAD
   width: 2px;
-=======
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
   color: white;
   top: 2%;
 }
@@ -60,7 +57,6 @@ h2:hover {
 
 .title {
   position: absolute;
-<<<<<<< HEAD
   top: 0px;
   left: 2.5%;
   color: white;
@@ -79,60 +75,32 @@ h2:hover {
   left: 6%;
   width: 20%;
   
-=======
-  left: 2.5%;
-  top: -7.5%;
-  color: white;
-}
-
-.example1 {
-  position: absolute;
-  top: 112%;
-  left: 6%;
-  width: 20%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
 }
 
 .example2 {
   position: absolute;
-<<<<<<< HEAD
   top: 10%;
-=======
-  top: 112%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
   left: 27%;
   width: 15%;
 }
 
 .example3 {
   position: absolute;
-<<<<<<< HEAD
   top: 10%;
-=======
-  top: 112%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
   left: 44%;
   width: 15%;
 }
 
 .example4 {
   position: absolute;
-<<<<<<< HEAD
   top: 10%;
-=======
-  top: 112%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
   left: 62%;
   width: 15%;
 }
 
 .example5 {
   position: absolute;
-<<<<<<< HEAD
   top: 10%;
-=======
-  top: 112%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
   left: 79%;
   width: 15%;
 }
@@ -181,7 +149,6 @@ h2:hover {
 .node-shortest-path-example {
   background-color: rgb(255, 254, 106);
 }
-<<<<<<< HEAD
 
 @media all and (max-width: 1000px) {
   .example1, .example2, .example3, .example4, .example5 {
@@ -219,5 +186,3 @@ h2:hover {
     top: 30%;
   }
 }
-=======
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9

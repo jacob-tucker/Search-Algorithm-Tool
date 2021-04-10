@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .entire {
   top: 20%;
   width: 100%;
@@ -8,10 +7,6 @@
 .grid {
   position: relative;
   margin: 0px 6%;
-=======
-.grid {
-  margin: 12% 6%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
 }
 
 .algorithm {
@@ -22,26 +17,16 @@
 }
 
 .namesofAlg{
-<<<<<<< HEAD
   display: flex;
   position: relative;
   top: -10px;
   left: 5.5%;
   width: 90%;
-=======
-  position: absolute;
-  top: 16%;
-  left: 5.5%;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
 }
 
 .namesofAlg p, .namesofAlg h2{
   margin-left: 10px;
-<<<<<<< HEAD
   
-=======
-  display: inline-block;
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
 }
 
 .namesofAlg p {
@@ -183,7 +168,6 @@
   border-radius: 5px;
   height: 10%;
 }
-<<<<<<< HEAD
 
 @media all and (max-width: 1000px) {
   .namesofAlg {
@@ -206,5 +190,3 @@
     left: 52%;
   }
 }
-=======
->>>>>>> a07806f8a367f4d8311cfcd9e1a329363555deb9
